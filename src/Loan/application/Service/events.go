@@ -1,7 +1,7 @@
 package service
 
 import (
-	repositories "ArquitecturaHexagonal_02/src/Loan/application/Repositories"
+	repositories "ArquitecturaHexagonal_02/src/Loan/application/repositories"
 	dominio "ArquitecturaHexagonal_02/src/Loan/domain"
 )
 
