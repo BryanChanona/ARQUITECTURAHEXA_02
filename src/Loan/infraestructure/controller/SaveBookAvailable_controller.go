@@ -1,6 +1,7 @@
 package controller
 
 import (
+	service "ArquitecturaHexagonal_02/src/Loan/application/Service"
 	"ArquitecturaHexagonal_02/src/Loan/application/UseCase"
 	"ArquitecturaHexagonal_02/src/Loan/domain"
 	"net/http"
@@ -10,9 +11,13 @@ import (
 
 type SaveBookAvailableController struct {
 	saveBookAvailable *UseCase.BooksAvailable
+	event      *service.Event
 }
-func NewSaveBookAvailableController(saveBookAvailable *UseCase.BooksAvailable) *SaveBookAvailableController {
-	return &SaveBookAvailableController{saveBookAvailable: saveBookAvailable}
+func NewSaveBookAvailableController(saveBookAvailable *UseCase.BooksAvailable,event *service.Event) *SaveBookAvailableController {
+	return &SaveBookAvailableController{
+		saveBookAvailable: saveBookAvailable,
+		event:      event,
+	}
 }
 
 func (controller *SaveBookAvailableController) Execute(ctx *gin.Context){
@@ -29,7 +34,7 @@ func (controller *SaveBookAvailableController) Execute(ctx *gin.Context){
 	}else {
 		ctx.JSON(http.StatusCreated, gin.H{"message": "Book saved"})
 	}
-
+	
 	
 
 
