@@ -30,7 +30,7 @@ func NewMySQL(db *sql.DB) *MySQL {
 
 func (mysql *MySQL) Save(book domain.Book) error {
 
-	query, err := mysql.db.Prepare("INSERT INTO booksAvailable (author, title, available) VALUES (?, ?,?)")
+	query, err := mysql.db.Prepare("INSERT INTO booksavailable (author, title, available) VALUES (?, ?,?)")
 
 	if err != nil {
 		return err
