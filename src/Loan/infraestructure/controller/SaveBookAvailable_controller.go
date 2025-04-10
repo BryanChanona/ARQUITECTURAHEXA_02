@@ -35,6 +35,12 @@ func (controller *SaveBookAvailableController) Execute(ctx *gin.Context){
 		ctx.JSON(http.StatusCreated, gin.H{"message": "Book saved"})
 	}
 	
+	err = controller.event.Execute(book)
+	if err != nil {
+		// Puedes registrar este error en los logs si el evento no se envió correctamente
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Error sending event to RabbitMQ"})
+	}
+	
 	
 
 
